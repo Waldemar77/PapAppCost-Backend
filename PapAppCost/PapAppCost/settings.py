@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 #BASE_DIR = 'https://papapp-cost-umb.vercel.app/'
@@ -56,6 +58,7 @@ DJANGO_APPS = [
 THIRD_APPS = [
     'rest_framework',
     'corsheaders',
+    'dj_database_url',
 ]
 
 LOCAL_APSS = [
@@ -104,17 +107,21 @@ WSGI_APPLICATION = 'PapAppCost.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'mssql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': '1433',
-        'OPTIONS': {
-            'driver': 'ODBC Driver 18 for SQL Server',
-        },
-    }
+    'default': dj_database_url.config(
+        default=f'mssqlms://{os.getenv("DB_USER")}:{os.getenv("DB_PASSWORD")}@{os.getenv("DB_HOST")}:1433/{os.getenv("DB_NAME")}',
+        conn_max_age=600
+    )    
+    # 'default': {
+    #     'ENGINE': 'mssql',
+    #     'NAME': os.getenv('DB_NAME'),
+    #     'USER': os.getenv('DB_USER'),
+    #     'PASSWORD': os.getenv('DB_PASSWORD'),
+    #     'HOST': os.getenv('DB_HOST'),
+    #     'PORT': '1433',
+    #     'OPTIONS': {
+    #         'driver': 'ODBC Driver 18 for SQL Server',
+    #     },
+    # }
 }
 
 
