@@ -4,5 +4,5 @@ set -o errexit
 
 pip install -r PapAppCost/requirements.txt
 
-python manage.py collectstatic --no-input
-python manage.py migrate
+python PapAppCost/manage.py collectstatic --no-input
+python PapAppCost/manage.py migrate
