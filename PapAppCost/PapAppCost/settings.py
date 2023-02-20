@@ -62,7 +62,7 @@ THIRD_APPS = [
 ]
 
 LOCAL_APSS = [
-    'login.apps.LoginConfig',
+    'PapAppCost.login.apps.LoginConfig',
 ]
 
 # We concatenate the list with the apps
