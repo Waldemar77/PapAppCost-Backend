@@ -108,9 +108,14 @@ WSGI_APPLICATION = 'PapAppCost.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=f'mssqlms://{os.getenv("DB_USER")}:{os.getenv("DB_PASSWORD")}@{os.getenv("DB_HOST")}:1433/{os.getenv("DB_NAME")}?driver=ODBC Driver 18 for SQL Server',
+        default='postgres://papappcostadmin:67GKaPC7PtkwO66fei2S4QBEsgtgHr4B@dpg-cfpqjjqrrk0fd9o1533g-a/papappcost',
         conn_max_age=600,
-    )    
+    )
+    
+    # 'default': dj_database_url.config(
+    #     default=f'mssqlms://{os.getenv("DB_USER")}:{os.getenv("DB_PASSWORD")}@{os.getenv("DB_HOST")}:1433/{os.getenv("DB_NAME")}?driver=ODBC Driver 18 for SQL Server',
+    #     conn_max_age=600,
+    # )    
     # 'default': {
     #     'ENGINE': 'mssql',
     #     'NAME': os.getenv('DB_NAME'),
